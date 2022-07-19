@@ -1,71 +1,20 @@
-# Getting Started with Create React App
+## Classary
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Classary is a contact class and library lookup tool for Starknet. 
 
-## Available Scripts
+### Contract Classes and Libraries
 
-In the project directory, you can run:
+Taking inspiration from object-oriented programming, StarkNet distinguishes between a contract and its implementation by separating contracts into classes and instances.
 
-### `npm start`
+A contract class is the definition of the contract: Cairo byte code, hint information, entry point names, and everything that defines its semantics unambiguously. Each class is identified by its class hash, which is analogous to a class name in an object oriented programming language. A contract instance is a deployed contract corresponding to some class. Notice that only contract instances behave as contracts in that they have their own storage and can be called by transactions or other contracts.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A contract class does not necessarily have a deployed instance in StarkNet.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Current Developer Experince 
 
-### `npm test`
+Currently, a developer needs to use starknet-cli get_class_by_hash command in order to get json compilation file of the class contract. This json file is not easy to read. Also, finding a deployed contract's hash and lookup for the compilation file is a two-step process.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How Classary Makes Experience Better
 
-### `npm run build`
+Classary parses given class hash and shows to the dev in a more easy-to-read way. 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# classlibrary
