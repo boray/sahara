@@ -2,7 +2,7 @@
 
 Classary is a contact class and library lookup tool for Starknet. 
 
-### COntract Classes and Libraries
+### Contract Classes and Libraries
 
 Taking inspiration from object-oriented programming, StarkNet distinguishes between a contract and its implementation by separating contracts into classes and instances.
 
