@@ -1,28 +1,53 @@
 import './App.css';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import { styled } from '@mui/material/styles';
+import React from 'react';
+import axios from 'axios';
 
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(3),
-  textAlign: 'center',
-  color: theme.palette.text.primary,
-}));
+
+
+
+
+
 
 function App() {
+
+  const [classHash, setClassHash] = React.useState();
+  const [TotalReactPackages, setTotalReactPackages] = React.useState(null);
+  const [errorMessage, setErrorMessage] = React.useState();
+
+
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(classHash);
+
+    axios.get("http://alpha4.starknet.io/feeder_gateway/get_class_by_hash?classHash=" + classHash)
+    .then(response => setTotalReactPackages(response.data));
+    console.log(TotalReactPackages);
+ 
+
+  }
+
+
   return (
     <div className="App">
       <header className="App-header">
-        
+      <h1> Starknet Class Library Query</h1>
+      <form onSubmit={handleSubmit}>
+      <p>What is contract classes https://docs.starknet.io/docs/Contracts/contract-classes/</p>
+      <input
+        type="text"
+        name="classhash"
+        placeholder="Enter a class hash"
+        value={classHash}
+        onChange={(e) => setClassHash(e.target.value)}
+
+      />
+      <button type="submit">
+        Query
+      </button>
+    </form>
+{/*
       <Box
       component="form"
       sx={{
@@ -43,6 +68,7 @@ function App() {
         <Item>@view SupportsInterface(interfaceId: felt) -> (success: felt)</Item>
       </Stack>
     </Box>
+    */}
       </header>
       
   
