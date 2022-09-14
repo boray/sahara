@@ -1,4 +1,4 @@
-## Classary
+## Sahara
 
 Classary is a contact class and library lookup tool for Starknet. 
 
@@ -14,7 +14,7 @@ A contract class does not necessarily have a deployed instance in StarkNet.
 
 Currently, a developer needs to use starknet-cli get_class_by_hash command in order to get json compilation file of the class contract. This json file is not easy to read. Also, finding a deployed contract's hash and lookup for the compilation file is a two-step process.
 
-### How Classary Makes Experience Better
+### How Sahara Improves The Developer Experience
 
-Classary parses given class hash and shows to the dev in a more easy-to-read way. 
+Sahara parses the ABI of the class or library related to given class hash and visualizes the ABI to the dev. 
 
