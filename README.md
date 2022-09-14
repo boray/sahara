@@ -18,3 +18,9 @@ Currently, a developer needs to use starknet-cli get_class_by_hash command in or
 
 Sahara parses the ABI of the class or library related to given class hash and visualizes the ABI to the dev. 
 
+### History and Future of this project
+
+Sahara is started in Starknet Paris Hackathon(2022). Shahar Papini has inspired me to do this project. Due to some unfortunate things I had at the hackathon time, I delivered only a static version of Sahara that represents the idea. 
+
+This is a standalone project for now. However, integrating sahara into a starknet explorer seems to be a better path.
+
