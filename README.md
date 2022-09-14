@@ -1,6 +1,6 @@
 ## Sahara
 
-Classary is a contact class and library lookup tool for Starknet. 
+Sahara is a contact class and library lookup tool for Starknet. 
 
 ### Contract Classes and Libraries
 
