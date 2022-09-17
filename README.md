@@ -26,4 +26,5 @@ This is a standalone project for now. However, integrating sahara into a starkne
 
 ###TODO
 - [ ] Prettier UI
+- [ ] Add a informative paragraph about classes and libraries in Starknet
 - [ ] Error Handling
