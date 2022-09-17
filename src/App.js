@@ -12,9 +12,7 @@ function App() {
   const [Response, setResponse] = React.useState([]);
   const [errorMessage, setErrorMessage] = React.useState();
   const [items, setItems] = React.useState([]);
-
-
-
+  const [functionsArray, setFunctionsArray] = React.useState([]);
 
 
   const handleSubmit = (event) => {
@@ -25,8 +23,20 @@ function App() {
     .then(response => setResponse(response.data.abi));
     console.log(Response);
     setItems(Response);
+    setFunctions(Response);
+
    //setItems(Response.abi);
    //console.log(items);
+  }
+
+  function setFunctions(array) {
+    let functions = [];
+    for(let i = 0; i< array.length; i++){
+      if(array[i].type == "function"){
+        functions.push(array[i]);
+      }
+    }
+    setFunctionsArray(functions);
   }
 
   const renderABI = (event) => {
@@ -55,10 +65,28 @@ function App() {
     </form>
     <button onClick={renderABI}> Render </button>
 
-   {Response.length > 0 &&(
+   {functionsArray.length > 0 &&(
     <ul>
-   {Response.map(item =>(
-    <li key={item.id}>{item.name} -- {item.type}</li>
+   {functionsArray.map(item =>(
+    <li key={item.id}>{item.name} -- {item.type}
+    {
+    item.outputs.map(output =>(
+     <p> <li key={output.id}>{output.name} - {output.type}</li></p>
+    ))
+    }
+    {
+    item.inputs.map(input =>(
+     <p> <li key={input.id}>{input.name} - {input.type}</li></p>
+    ))
+    }
+    {
+      item.hasOwnProperty("stateMutability") && (
+        <p>
+          {item.stateMutability}
+        </p>
+      )
+    }
+    </li>
    ))}
    </ul>
     )}
