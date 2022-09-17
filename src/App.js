@@ -1,18 +1,18 @@
 import './App.css';
-import React from 'react';
+import React, { useEffect, Paper, FlatList,Text, Divider } from 'react';
 import axios from 'axios';
-
-
-
-
+import { getAllByTestId } from '@testing-library/react';
+import { ListItem, ListItemText } from '@mui/material';
 
 
 
 function App() {
 
   const [classHash, setClassHash] = React.useState();
-  const [TotalReactPackages, setTotalReactPackages] = React.useState(null);
+  const [Response, setResponse] = React.useState([]);
   const [errorMessage, setErrorMessage] = React.useState();
+  const [items, setItems] = React.useState([]);
+
 
 
 
@@ -22,10 +22,17 @@ function App() {
     console.log(classHash);
 
     axios.get("http://alpha4.starknet.io/feeder_gateway/get_class_by_hash?classHash=" + classHash)
-    .then(response => setTotalReactPackages(response.data));
-    console.log(TotalReactPackages);
- 
+    .then(response => setResponse(response.data.abi));
+    console.log(Response);
+    setItems(Response);
+   //setItems(Response.abi);
+   //console.log(items);
+  }
 
+  const renderABI = (event) => {
+    event.preventDefault();
+    
+    
   }
 
 
@@ -40,14 +47,37 @@ function App() {
         name="classhash"
         placeholder="Enter a class hash"
         value={classHash}
-        onChange={(e) => setClassHash(e.target.value)}
+        onChange={(e) => setClassHash(e.target.value)}/>
 
-      />
       <button type="submit">
         Query
       </button>
     </form>
-{/*
+    <button onClick={renderABI}> Render </button>
+
+   {Response.length > 0 &&(
+    <ul>
+   {Response.map(item =>(
+    <li key={item.id}>{item.name} -- {item.type}</li>
+   ))}
+   </ul>
+    )}
+
+   {/* 
+<Paper>
+   {items.map((object) => (
+<List key={object.id}>
+  <ListItem alignItems="flex-start">
+    <ListItemText
+      primary={object.key.name}
+      secondary={object.key.type}/>  
+  </ListItem>
+  <Divider variant="inset" component="li"/>
+</List>
+
+   ))}
+</Paper>
+
       <Box
       component="form"
       sx={{
