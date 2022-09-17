@@ -24,3 +24,6 @@ Sahara is started in Starknet Paris Hackathon(2022). Shahar Papini has inspired 
 
 This is a standalone project for now. However, integrating sahara into a starknet explorer seems to be a better path.
 
+###TODO
+- [ ] Prettier UI
+- [ ] Error Handling
