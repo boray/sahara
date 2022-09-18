@@ -1,5 +1,9 @@
 .App {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .App-logo {
@@ -15,13 +19,13 @@
 
 .App-header {
   background-color: #ffffff;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding-top: 5vh;
-  font-size: calc(10px + 2vmin);
+  
   color: black;
 }
 
@@ -29,9 +33,31 @@
   height: 6vh;
 }
 
+.queryField {
+  width: 28vw;
+}
+
 .App-link {
   color: #61dafb;
 }
+
+.result {
+  color: black;
+  width: 50%;
+  padding: 0 20px;
+  margin-top: 5%;
+  text-align: justify;
+  
+}
+
+ol {
+  text-align: left;
+}
+
+li {
+  list-style-position: inside;
+}
+
 
 @keyframes App-logo-spin {
   from {
