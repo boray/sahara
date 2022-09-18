@@ -25,6 +25,8 @@
   align-items: center;
   justify-content: flex-start;
   padding-top: 5vh;
+  width: 50%;
+
   
   color: black;
 }
@@ -43,7 +45,7 @@
 
 .result {
   color: black;
-  width: 50%;
+  width: 40%;
   padding: 0 20px;
   margin-top: 5%;
   text-align: justify;
@@ -56,6 +58,7 @@ ol {
 
 li {
   list-style-position: inside;
+  padding-top: 0.5rem;
 }
 
 

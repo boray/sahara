@@ -13,8 +13,6 @@ function App() {
   const [structsArray, setStructsArray] = React.useState([]);
   const [eventsArray, setEventsArray] = React.useState([]);
 
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(classHash);
@@ -23,9 +21,6 @@ function App() {
     .then(response => setResponse(response.data.abi))
     console.log(Response);
     seperateObjects(Response);
-
-   //setItems(Response.abi);
-   //console.log(items);
   }
 
   function seperateObjects(array) {
@@ -46,21 +41,13 @@ function App() {
     setFunctionsArray(functions);
     setEventsArray(events);
     setStructsArray(structs);
-
   }
-
-// WANTED BEHAVOUR
-// struct structName(x: felt, y:felt, z: AnotherStruct)
-// event eventName(x: felt, y: felt)
-// @view function functionName(x : felt, y :felt) -> (a: felt, b:felt)
-
 
   return (
     <div className="App">
       <header className="App-header">
-      <h1> Sahara: Starknet Contract Class Visualizer</h1>
+      <h1> <a href="https://github.com/boray/sahara">Sahara</a>: Starknet Contract Class Visualizer</h1>
       <form onSubmit={handleSubmit}>
-      <p>Cairo 0.9 splitted the concepts of contract class and contract instance. By this, anyone can declare a contract class and anyone can deploy an instance of that contract class.</p>
       <input
         className="queryField"
         type="text"
@@ -77,11 +64,55 @@ function App() {
     </header>
 
     <div className="result">
+    <h3>Structs</h3>
+    {structsArray.length > 0 &&(
+    <ul>
+   {structsArray.map(item =>(
+    <li>
+  
       
+      {item.name}(
+    
+    
+    {
+    item.members.map((data,i) =>(
+      <>{i > 0 && <>,</>} {data.name}: {data.type}</> 
+    ))
+    }
+    )
 
 
+    </li>
+   ))}
+   </ul>
+    )}
+
+<h3>Events</h3>
+{eventsArray.length > 0 &&(
+    <ul>
+   {eventsArray.map(item =>(
+    <li>
+  
+      
+      {item.name}(
+    
+    
+    {
+    item.data.map((data,i) =>(
+      <>{i > 0 && <>,</>} {data.name}: {data.type}</> 
+    ))
+    }
+    )
+
+
+    </li>
+   ))}
+   </ul>
+    )}
+
+    <h3>Functions</h3>
    {functionsArray.length > 0 &&(
-    <ol>
+    <ul>
    {functionsArray.map(item =>(
     <li>
     {
@@ -92,7 +123,7 @@ function App() {
       )
     }
       
-      function {item.name}(
+      {item.name}(
     
     
     {
@@ -113,56 +144,8 @@ function App() {
 
     </li>
    ))}
-   </ol>
+   </ul>
     )}
-
-
-{eventsArray.length > 0 &&(
-    <ol>
-   {eventsArray.map(item =>(
-    <li>
-  
-      
-      event {item.name}(
-    
-    
-    {
-    item.data.map((data,i) =>(
-      <>{i > 0 && <>,</>} {data.name}: {data.type}</> 
-    ))
-    }
-    )
-
-
-    </li>
-   ))}
-   </ol>
-    )}
-
-{structsArray.length > 0 &&(
-    <ol>
-   {structsArray.map(item =>(
-    <li>
-  
-      
-      struct {item.name}(
-    
-    
-    {
-    item.members.map((data,i) =>(
-      <>{i > 0 && <>,</>} {data.name}: {data.type}</> 
-    ))
-    }
-    )
-
-
-    </li>
-   ))}
-   </ol>
-    )}
-
-
-
 
 </div>
     </div>
