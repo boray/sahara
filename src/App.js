@@ -29,13 +29,6 @@ function App() {
 
   }
 
-  const getABI = async () => {
-
-      const response = await axios.get("http://alpha4.starknet.io/feeder_gateway/get_class_by_hash?classHash=" + classHash);
-      setResponse(response.data.abi);
-   
-
-  }
   function seperateObjects(array) {
     let functions = [];
     let structs = [];
