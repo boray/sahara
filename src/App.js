@@ -16,13 +16,26 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(classHash);
-
     axios.get("http://alpha4.starknet.io/feeder_gateway/get_class_by_hash?classHash=" + classHash)
-    .then(response => setResponse(response.data.abi))
-    console.log(Response);
-    seperateObjects(Response);
+    .then(response => {
+      setResponse(response.data.abi);
+      seperateObjects(response.data.abi);
+      console.log(response.data.abi);
+    })
+    .catch(err => {
+        console.log(err);
+        return null;
+    });
+
   }
 
+  const getABI = async () => {
+
+      const response = await axios.get("http://alpha4.starknet.io/feeder_gateway/get_class_by_hash?classHash=" + classHash);
+      setResponse(response.data.abi);
+   
+
+  }
   function seperateObjects(array) {
     let functions = [];
     let structs = [];
@@ -62,9 +75,10 @@ function App() {
     </form>
 
     </header>
-
+  {Response.length > 0 && 
     <div className="result">
-    <h3>Structs</h3>
+   
+    {structsArray.length > 0 && <h3>Structs</h3>}
     {structsArray.length > 0 &&(
     <ul>
    {structsArray.map(item =>(
@@ -87,7 +101,7 @@ function App() {
    </ul>
     )}
 
-<h3>Events</h3>
+{eventsArray.length > 0 && <h3>Events</h3>}
 {eventsArray.length > 0 &&(
     <ul>
    {eventsArray.map(item =>(
@@ -110,7 +124,7 @@ function App() {
    </ul>
     )}
 
-    <h3>Functions</h3>
+   {functionsArray.length > 0 && <h3>Functions</h3>} 
    {functionsArray.length > 0 &&(
     <ul>
    {functionsArray.map(item =>(
@@ -118,7 +132,7 @@ function App() {
     {
       item.hasOwnProperty("stateMutability") && (
         
-          <>@ {item.stateMutability} </>
+          <>@{item.stateMutability} </>
        
       )
     }
@@ -148,8 +162,10 @@ function App() {
     )}
 
 </div>
+}
     </div>
   );
 }
+
 
 export default App;
